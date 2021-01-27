@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <table>
+      {% for candidate in candidates %}
+      <tr>
+        <td>{{candidate.name}} {{candidate.last_name}}</td>
+        {% for vac in vacs %}
+        {% if vac.specialty == candidate.specialty %}
+        <td>{{vac.name}}</td>
+        {% endif %}
+        {% endfor %}
+        <td>{{candidate.specialty.name}}</td>
+        {% for cv in cvs %}
+        {% if cv.candidate == candidate %}
+        <td>{{cv.url}}</td>
+        {% endif %}
+        {% endfor %}
+        <td></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
