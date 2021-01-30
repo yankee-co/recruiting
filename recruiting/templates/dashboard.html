@@ -3,24 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Dashboard</title>
+
+    <style media="screen">
+        table{
+          background-color:rgba(215, 157, 22, 0.36);
+        }
+        td{
+          padding:10px;
+          border:2px solid orange;
+        }
+        .first{
+          text-align: center;
+          font-weight: bold;
+        }
+    </style>
   </head>
+
   <body>
     <table>
-      {% for candidate in candidates %}
+      <tr class = 'first'>
+        <td>№</td>
+        <td>Кандидат</td>
+        <td>Вакансия</td>
+        <td>Специальность</td>
+        <td>Ссылка</td>
+      </tr>
+      {% for dicted in data %}
       <tr>
-        <td>{{candidate.name}} {{candidate.last_name}}</td>
-        {% for vac in vacs %}
-        {% if vac.specialty == candidate.specialty %}
-        <td>{{vac.name}}</td>
-        {% endif %}
-        {% endfor %}
-        <td>{{candidate.specialty.name}}</td>
-        {% for cv in cvs %}
-        {% if cv.candidate == candidate %}
-        <td>{{cv.url}}</td>
-        {% endif %}
-        {% endfor %}
-        <td></td>
+        <td>{{dicted.num}}</td>
+        <td>{{dicted.name}}</td>
+        <td>{{dicted.vacancy}}</td>
+        <td>{{dicted.specialty}}</td>
+        <td>{{dicted.url}}</td>
       </tr>
       {% endfor %}
     </table>
